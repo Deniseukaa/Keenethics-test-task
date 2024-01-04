@@ -1,7 +1,4 @@
-import * as Joi from 'joi';
-import { CreateBicycleDto } from './create.bicycle.dto';
+import { z } from 'zod';
+import { BicycleSchema, PartialBicycleSchema } from '../types/bicycle.types';
 
-export const UpdateBicycleDto = Joi.object(CreateBicycleDto).fork(
-  Object.keys(CreateBicycleDto),
-  (schema) => schema.optional(),
-);
+export type UpdateBicycleDto = z.infer<typeof PartialBicycleSchema>;

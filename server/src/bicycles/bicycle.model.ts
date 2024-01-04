@@ -1,24 +1,7 @@
 import { Schema, model } from 'mongoose';
+import { Bicycle } from './types/bicycle.types';
 
-export enum BicycleStatusesEnum {
-  available = 'Available',
-  busy = 'Busy',
-  unavailable = 'Unavailable',
-}
-export type BicycleStatusType = `${BicycleStatusesEnum}`;
-
-export interface IBicycle {
-  id: string;
-  name: string;
-  type: string;
-  color: string;
-  wheelSize: number;
-  price: number;
-  description: string;
-  status: BicycleStatusType;
-}
-
-export const bicycleSchema = new Schema<IBicycle>({
+export const bicycleSchema = new Schema<Bicycle>({
   id: {
     type: String,
     required: true,
@@ -55,4 +38,4 @@ export const bicycleSchema = new Schema<IBicycle>({
   },
 });
 
-export const Bicycle = model<IBicycle>('Bicycle', bicycleSchema);
+export const BicycleModel = model<Bicycle>('Bicycle', bicycleSchema);
