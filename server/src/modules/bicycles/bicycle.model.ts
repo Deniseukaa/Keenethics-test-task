@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Bicycle } from './types/bicycle.types';
+import { Bicycle } from '@bicycles/types/bicycle.types';
 
 export const bicycleSchema = new Schema<Bicycle>({
   id: {
