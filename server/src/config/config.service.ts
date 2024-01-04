@@ -1,6 +1,6 @@
 import { DotenvConfigOutput, DotenvParseOutput, config } from 'dotenv';
 import { IConfigService } from './config.service.interface';
-import { LoggerService } from '../logger/logger.service';
+import { LoggerService } from '@/logger/logger.service';
 
 export class ConfigService implements IConfigService {
   private config: DotenvParseOutput;

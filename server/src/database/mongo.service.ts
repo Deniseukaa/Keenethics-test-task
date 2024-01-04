@@ -1,6 +1,6 @@
 import { connect, disconnect } from 'mongoose';
-import { ConfigService } from '../config/config.service';
-import { LoggerService } from '../logger/logger.service';
+import { ConfigService } from '@/config/config.service';
+import { LoggerService } from '@/logger/logger.service';
 import { IMongoService } from './mongo.service.interface';
 
 export class MongoService implements IMongoService {
