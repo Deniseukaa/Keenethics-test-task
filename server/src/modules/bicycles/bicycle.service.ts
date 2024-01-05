@@ -3,7 +3,7 @@ import { Model } from 'mongoose';
 import { HTTPError } from '@/common/errors/http.error';
 import { LoggerService } from '@/logger/logger.service';
 import { CreateBicycleDto } from '@bicycles/dto/create.bicycle.dto';
-import { Bicycle } from '@bicycles/types/bicycle.types';
+import { Bicycle, BicycleStatusesEnum } from '@bicycles/types/bicycle.types';
 import { UpdateBicycleDto } from './dto/update.bicycle.dto';
 import { BicycleStatisticsType } from './types/bicycle.statistics.type';
 
@@ -60,9 +60,11 @@ export class BicycleService {
   public async getStatistics(): Promise<BicycleStatisticsType> {
     const total = await this.bicycleModel.countDocuments();
     const available = await this.bicycleModel.countDocuments({
-      status: 'Available',
+      status: BicycleStatusesEnum.Available,
     });
-    const booked = await this.bicycleModel.countDocuments({ status: 'Busy' });
+    const booked = await this.bicycleModel.countDocuments({
+      status: BicycleStatusesEnum.Busy,
+    });
     const averagePrice = await this.bicycleModel.aggregate([
       {
         $group: {

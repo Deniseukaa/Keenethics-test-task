@@ -1,11 +1,10 @@
 import { z } from 'zod';
 
 export enum BicycleStatusesEnum {
-  Available,
-  Busy,
-  Unavailable,
+  Available = 'Available',
+  Busy = 'Busy',
+  Unavailable = 'Unavailable',
 }
-export type BicycleStatusType = keyof typeof BicycleStatusesEnum;
 
 export const BicycleSchema = z.object({
   id: z
