@@ -22,8 +22,9 @@
     //path
     "baseUrl": "./src",
     "paths": {
-      "@common/*": ["common/*"],
-      "@components/*": ["common/components/*"]
+      "@components/*": ["./common/components/*"],
+      "@common/*": ["./common/*", "!./common/components/*"],
+      "@admin/*": ["./modules/admin/*"]
     }
   },
   "include": ["src"],

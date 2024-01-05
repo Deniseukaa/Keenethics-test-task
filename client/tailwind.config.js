@@ -7,10 +7,11 @@ export default {
         available: '#6FCF97',
         busy: '#F2994A',
         unavailable: '#EB5757',
-        mainGray: '#696969',
+        mainGrayBg: '#696969',
         inputsBg: '#E8E8E8',
         special: '#E8E8E8',
         inputsPlaceholder: '#717171',
+        inputsOutline: '#696969',
       },
       fontFamily: {
         sairaStencilOne: ['Saira Stencil One', 'sans-serif'],
