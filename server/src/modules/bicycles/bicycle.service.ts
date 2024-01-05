@@ -4,8 +4,8 @@ import { HTTPError } from '@/common/errors/http.error';
 import { LoggerService } from '@/logger/logger.service';
 import { CreateBicycleDto } from '@bicycles/dto/create.bicycle.dto';
 import { Bicycle, BicycleStatusesEnum } from '@bicycles/types/bicycle.types';
-import { UpdateBicycleDto } from './dto/update.bicycle.dto';
-import { BicycleStatisticsType } from './types/bicycle.statistics.type';
+import { UpdateBicycleDto } from '@bicycles/dto/update.bicycle.dto';
+import { BicycleStatisticsType } from '@bicycles/types/bicycle.statistics.type';
 
 export class BicycleService {
   constructor(

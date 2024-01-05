@@ -2,11 +2,11 @@ import { NextFunction, Request, Response, Router } from 'express';
 
 import { HTTPError } from '@/common/errors/http.error';
 import { LoggerService } from '@/logger/logger.service';
-import { CreateBicycleDto } from './dto/create.bicycle.dto';
-import { UpdateBicycleDto } from './dto/update.bicycle.dto';
-import { BicycleService } from './bicycle.service';
-import { validateBicycleCreate } from './validation/create.bicycle.validation';
-import { validateBicycleUpdate } from './validation/update.bicycle.validation';
+import { validateBicycleCreate } from '@bicycles/validation/create.bicycle.validation';
+import { validateBicycleUpdate } from '@bicycles/validation/update.bicycle.validation';
+import { BicycleService } from '@bicycles/bicycle.service';
+import { CreateBicycleDto } from '@bicycles/dto/create.bicycle.dto';
+import { UpdateBicycleDto } from '@bicycles/dto/update.bicycle.dto';
 
 export class BicycleController {
   public router: Router;
