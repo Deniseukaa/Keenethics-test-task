@@ -45,8 +45,3 @@ export class App {
     this.server.close();
   }
 }
-
-// TODO: refactor paths
-// TODO: add enums to status
-// TODO: commit all changes
-// TODO: mb add swagger
