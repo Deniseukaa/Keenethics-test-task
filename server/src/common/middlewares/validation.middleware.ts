@@ -1,5 +1,6 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { z } from 'zod';
+
 export const validate =
   (schema: z.AnyZodObject | z.ZodOptional<z.AnyZodObject>): RequestHandler =>
   async (req: Request, res: Response, next: NextFunction) => {

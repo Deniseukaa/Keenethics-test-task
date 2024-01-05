@@ -36,7 +36,7 @@ export const BicycleSchema = z.object({
     required_error: 'Wheel size is required',
   }),
   price: z.number({
-    required_error: 'Wheel size is required',
+    required_error: 'Price size is required',
   }),
   description: z
     .string({

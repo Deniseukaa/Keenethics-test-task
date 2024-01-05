@@ -1,4 +1,5 @@
 import { Logger, ILogObj } from 'tslog';
+
 import { ILoggerService } from './logger.interface';
 
 export class LoggerService implements ILoggerService {
