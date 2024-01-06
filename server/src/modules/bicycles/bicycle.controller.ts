@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response, Router } from 'express';
 
-import { HTTPError } from '@/common/errors/http.error';
 import { LoggerService } from '@/logger/logger.service';
-import { validateBicycleCreate } from '@bicycles/validation/create.bicycle.validation';
-import { validateBicycleUpdate } from '@bicycles/validation/update.bicycle.validation';
 import { BicycleService } from '@bicycles/bicycle.service';
 import { CreateBicycleDto } from '@bicycles/dto/create.bicycle.dto';
 import { UpdateBicycleDto } from '@bicycles/dto/update.bicycle.dto';
+import { validateBicycleCreate } from '@bicycles/validation/create.bicycle.validation';
+import { validateBicycleUpdate } from '@bicycles/validation/update.bicycle.validation';
 
 export class BicycleController {
   public router: Router;
@@ -29,11 +28,7 @@ export class BicycleController {
       await this.bicycleService.updateBicycle(id, body);
       res.status(200).json({ message: 'Bicycle successfully created' });
     } catch (error) {
-      if (error instanceof HTTPError) {
-        res.status(error.statusCode).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: 'Server error' });
-      }
+      next(error);
     }
   }
 
@@ -47,11 +42,7 @@ export class BicycleController {
       await this.bicycleService.deleteBicycle(id);
       res.status(200).json({ message: 'Bicycle successfully deleted' });
     } catch (error) {
-      if (error instanceof HTTPError) {
-        res.status(error.statusCode).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: 'Server error' });
-      }
+      next(error);
     }
   }
 
@@ -63,13 +54,9 @@ export class BicycleController {
     const body: CreateBicycleDto = req.body;
     try {
       await this.bicycleService.createBicycle(body);
-      res.status(200).send('Bicycle successfully created');
+      res.status(200).json({ message: 'Bicycle successfully created' });
     } catch (error) {
-      if (error instanceof HTTPError) {
-        res.status(error.statusCode).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: 'Server error' });
-      }
+      next(error);
     }
   }
 
@@ -82,11 +69,7 @@ export class BicycleController {
       const result = await this.bicycleService.getStatistics();
       res.status(200).json(result);
     } catch (error) {
-      if (error instanceof HTTPError) {
-        res.status(error.statusCode).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: 'Server error' });
-      }
+      next(error);
     }
   }
 
@@ -99,11 +82,7 @@ export class BicycleController {
       const result = await this.bicycleService.getBicycles();
       res.status(200).json(result);
     } catch (error) {
-      if (error instanceof HTTPError) {
-        res.status(error.statusCode).json({ message: error.message });
-      } else {
-        res.status(500).json({ message: 'Server error' });
-      }
+      next(error);
     }
   }
 
