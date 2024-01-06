@@ -28,14 +28,14 @@ export class App {
     this.app.use(express.json());
   }
 
-  useExeptionFilters(): void {
+  useExceptionFilters(): void {
     this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
   public async init(): Promise<void> {
     this.useMiddleWare();
     this.useRoutes();
-    this.useExeptionFilters();
+    this.useExceptionFilters();
     await this.mongoService.connect();
     this.server = this.app.listen(this.port);
     this.logger.log(`Server starts on http://localhost:${this.port}`);
