@@ -12,6 +12,8 @@ export default {
         special: '#E8E8E8',
         inputsPlaceholder: '#717171',
         inputsOutline: '#696969',
+        cardTextFont: '#333333',
+        cardIdFont: '#717171',
       },
       fontFamily: {
         sairaStencilOne: ['Saira Stencil One', 'sans-serif'],

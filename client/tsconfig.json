@@ -22,6 +22,7 @@
     //path
     "baseUrl": "./src",
     "paths": {
+      "@core/*": ["./core/*"],
       "@components/*": ["./common/components/*"],
       "@common/*": ["./common/*", "!./common/components/*"],
       "@admin/*": ["./modules/admin/*"]
