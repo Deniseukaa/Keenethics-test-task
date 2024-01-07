@@ -26,7 +26,7 @@ export class BicycleController {
     const id = req.params.id;
     try {
       await this.bicycleService.updateBicycle(id, body);
-      res.status(200).json({ message: 'Bicycle successfully created' });
+      res.status(200).json({ message: 'Bicycle successfully updated' });
     } catch (error) {
       next(error);
     }
