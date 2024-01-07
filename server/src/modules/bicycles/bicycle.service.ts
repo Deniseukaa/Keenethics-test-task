@@ -3,9 +3,9 @@ import { Model } from 'mongoose';
 import { HTTPError } from '@/common/errors/http.error';
 import { LoggerService } from '@/logger/logger.service';
 import { CreateBicycleDto } from '@bicycles/dto/create.bicycle.dto';
-import { Bicycle, BicycleStatusesEnum } from '@bicycles/types/bicycle.types';
 import { UpdateBicycleDto } from '@bicycles/dto/update.bicycle.dto';
 import { BicycleStatisticsType } from '@bicycles/types/bicycle.statistics.type';
+import { Bicycle, BicycleStatusesEnum } from '@bicycles/types/bicycle.types';
 
 export class BicycleService {
   constructor(
@@ -59,6 +59,14 @@ export class BicycleService {
 
   public async getStatistics(): Promise<BicycleStatisticsType> {
     const total = await this.bicycleModel.countDocuments();
+    if (total === 0) {
+      return {
+        total: 0,
+        available: 0,
+        averagePrice: 0,
+        booked: 0,
+      };
+    }
     const available = await this.bicycleModel.countDocuments({
       status: BicycleStatusesEnum.Available,
     });
