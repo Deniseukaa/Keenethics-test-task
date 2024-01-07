@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import { Server } from 'http';
-
+import cors from 'cors';
 import { ExceptionFilter } from '@/exceptionFilter/exception.filter';
 import { BicycleController } from '@bicycles/bicycle.controller';
 import { MongoService } from '@/database/mongo.service';
@@ -25,6 +25,7 @@ export class App {
   }
 
   useMiddleWare(): void {
+    this.app.use(cors());
     this.app.use(express.json());
   }
 
