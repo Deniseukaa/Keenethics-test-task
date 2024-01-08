@@ -14,14 +14,22 @@ export const Form: FC<FormProps> = () => {
   } = useForm<Bicycle>({
     resolver: zodResolver(BicycleSchema),
   });
-  const [addBicycle, { error }] = useAddBicycleMutation();
+  const [addBicycle, result] = useAddBicycleMutation();
 
-  if (error) {
+  if (result.error) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    toast.error(error.data.message, {
+    toast.error(result.error.data.message, {
       position: 'bottom-right',
       toastId: 'error',
+      draggable: false,
+    });
+  }
+
+  if (result) {
+    toast.success(result.data?.message, {
+      position: 'bottom-right',
+      toastId: 'createResult',
       draggable: false,
     });
   }

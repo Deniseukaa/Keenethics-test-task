@@ -3,36 +3,17 @@ import {
   useGetBicyclesQuery,
   useUpdateBicycleMutation,
 } from '@admin/repository/bicycle.repository';
-import { Spinner } from '@components/spinner/Spinner';
-import { FC, useCallback, useEffect } from 'react';
-import { BicycleCard } from '../BicycleCard/BicycleCard';
-import { toast } from 'react-toastify';
 import { PartialBicycle } from '@admin/types/bicycle.types';
+import { Spinner } from '@components/spinner/Spinner';
+import { FC, useCallback } from 'react';
+import { BicycleCard } from '../BicycleCard/BicycleCard';
 
 interface BicycleListProps {}
 
 export const BicycleList: FC<BicycleListProps> = () => {
   const { data, isLoading, isError } = useGetBicyclesQuery();
-  const [deleteBicycle, deleteResult] = useDeleteBicycleMutation();
-  const [updateBicycle, updateResult] = useUpdateBicycleMutation();
-
-  useEffect(() => {
-    if (deleteResult) {
-      toast.success(deleteResult.data?.message, {
-        position: 'bottom-right',
-        toastId: 'deleteResult',
-        draggable: false,
-      });
-      return;
-    }
-    if (updateResult) {
-      toast.success(updateResult.data?.message, {
-        position: 'bottom-right',
-        toastId: 'updateResult',
-        draggable: false,
-      });
-    }
-  }, [deleteResult, updateResult]);
+  const [deleteBicycle] = useDeleteBicycleMutation();
+  const [updateBicycle] = useUpdateBicycleMutation();
 
   const onDelete = useCallback((id: string) => {
     deleteBicycle(id);
